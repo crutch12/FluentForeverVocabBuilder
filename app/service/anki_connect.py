@@ -87,7 +87,7 @@ class AnkiConnect:
         params = {
             "note": {
                 "deckName": deck_name,
-                "modelName": "Basiс (optional reversed card)",
+                "modelName": "Basic (optional reversed card)",
                 "fields": {
                     "Front": picture_field + "<br>" + formatted_notes_front,
                     "Back": word
