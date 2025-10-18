@@ -89,6 +89,7 @@ def add():
         recording_file_path=audio_filename,
         reverse=args.get("reverse") or False,
     )
+    ac.sync()
     return json.dumps({"success": True}), 200, {"ContentType": "application/json"}
 
 

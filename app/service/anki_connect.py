@@ -105,3 +105,13 @@ class AnkiConnect:
 
         note_id = self.invoke("addNote", params)
         return note_id
+
+    def sync(
+        self,
+    ):
+        params = {
+            # "fullSync": True  # Optional: True forces full sync
+        }
+
+        sync_result = self.invoke("sync", params)
+        return sync_result
