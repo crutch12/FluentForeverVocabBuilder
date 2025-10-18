@@ -2,3 +2,4 @@
 venv
 app/temp
 *.pyc
+.env.tuna

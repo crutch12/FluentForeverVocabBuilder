@@ -10,10 +10,13 @@ cfg = app.config
 
 
 class AnkiConnect:
-    URL = "http://localhost:8765/"
+    # URL = "http://anki-desktop:8765/"
+    URL = "http://host.docker.internal:8765/"
     VERSION = 6
 
     def invoke(self, action, params=None):
+        
+        
         payload = {"action": action, "version": self.VERSION}
         if params:
             payload["params"] = params

@@ -1,0 +1,3 @@
+FROM yuccastream/tuna:latest
+
+CMD ["http", "web:5000", "--subdomain=anki"]
