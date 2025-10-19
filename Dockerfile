@@ -13,10 +13,10 @@ RUN python -m venv venv
 
 RUN bash venv/bin/activate
 
-COPY . /app
-
-# # RUN python -m pip install -r requirements.txt --upgrade pip setuptools wheel
+COPY requirements.txt /app
 
 RUN pip install -r requirements.txt
+
+COPY . /app
 
 CMD ["bash", "start.sh"]
