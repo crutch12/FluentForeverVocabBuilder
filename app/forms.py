@@ -12,6 +12,7 @@ class SearchForm(FlaskForm):
 
 class AnkiForm(FlaskForm):
     image_query = StringField("Image Query")
+    ipa_transcription = TextAreaField("IPA Transcription")
     notes_front = TextAreaField("Notes Front (side with image)")
     notes_back = TextAreaField("Notes Back (side with word and audio)")
     reverse = BooleanField("Add reverse card (target to original) ?")

@@ -59,6 +59,7 @@ class AnkiConnect:
         deck_name,
         word,
         image_paths,
+        ipa_transcription,
         notes_front,
         notes_back,
         recording_file_path,
@@ -74,6 +75,7 @@ class AnkiConnect:
         for stored_image in stored_images:
             picture_field += '<img src="{}">'.format(stored_image)
 
+        formatted_ipa_transcription = self.format_notes(ipa_transcription)
         formatted_notes_front = self.format_notes(notes_front)
         formatted_notes_back = self.format_notes(notes_back)
 
@@ -91,6 +93,8 @@ class AnkiConnect:
                 "fields": {
                     "Front": picture_field + "<br>" + formatted_notes_front,
                     "Back": word
+                    + "<br>"
+                    + formatted_ipa_transcription
                     + "<br>"
                     + pronunciation_field
                     + "<br>"

@@ -43,6 +43,9 @@ def search():
         audio_relative_filename = ""
     form.image_query.data = word
 
+    ipa_transcription = search_result.get("ipa_transcription")
+    form.ipa_transcription.data = ipa_transcription
+
     return render_template(
         "search-results.html",
         word=word,
@@ -78,12 +81,14 @@ def add():
     parsed_json_image_paths = json.loads(json_image_paths)
     image_paths = list(map(images.format_json_image_path, parsed_json_image_paths))
     thumbnail_image_paths = list(map(images.generate_thumbnail, image_paths))
+    ipa_transcription = args.get("ipa_transcription")
     notes_front = args.get("notes_front")
     notes_back = args.get("notes_back")
     ac.add_note(
         deck_name=deck,
         word=word,
         image_paths=thumbnail_image_paths,
+        ipa_transcription=ipa_transcription,
         notes_front=notes_front,
         notes_back=notes_back,
         recording_file_path=audio_filename,
