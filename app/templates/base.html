@@ -1,18 +1,32 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <title>Fluent Forever Helper</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{{ url_for("static", filename="css/bootstrap-dark.css") }}" type="text/css">
-    <link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}" type="text/css">
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#007bff">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FFH">
+    <meta name="description" content="Vocabulary flashcard builder for Anki">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-dark.css' ) }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}" type="text/css">
 </head>
+
 <body>
-<div class="container my-4">
-    <h1>Fluent Forever Vocab Builder</h1>
-    {% block content %}{% endblock %}
-</div>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript" defer></script>
-<script src="{{ url_for('static', filename='js/paste.js') }}" type="text/javascript" defer></script>
-<script src="{{ url_for('static', filename='js/index.js') }}" type="text/javascript" defer></script>
+    <div class="container my-4">
+        <h1>Fluent Forever Vocab Builder</h1>
+        {% block content %}{% endblock %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript" defer></script>
+    <script src="{{ url_for('static', filename='js/paste.js') }}" type="text/javascript" defer></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}" type="text/javascript" defer></script>
 </body>
+
 </html>

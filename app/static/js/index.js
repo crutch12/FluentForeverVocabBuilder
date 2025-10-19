@@ -96,7 +96,7 @@ function searchImages(query, language, loadFirstPage) {
             $("<button/>")
                 .html("Load more images" +
                     '<div class="spinner-border spinner-border-sm image-search-more-spinner ml-2 d-none" role="status">' +
-                        '<span class="sr-only">Loading more images...</span>' +
+                    '<span class="sr-only">Loading more images...</span>' +
                     '</div>')
                 .attr("type", "button")
                 .addClass("load-more btn btn-link")
@@ -156,8 +156,8 @@ function add() {
 
 
 function imgSearchWatch() {
-    $("body").on("click", ".btn-image-search", function() {
-        searchImages(null, null , true);
+    $("body").on("click", ".btn-image-search", function () {
+        searchImages(null, null, true);
     });
 }
 
@@ -212,11 +212,11 @@ function pasteWatch() {
     const sel = ".gallery-selected";
     $(sel).pastableNonInputable()
         .off("pasteImage").on("pasteImage", function (e, data) {
-        $("<img />")
-            .attr("src", data.dataURL)
-            .addClass("img-thumbnail img-selected")
-            .appendTo(sel);
-    });
+            $("<img />")
+                .attr("src", data.dataURL)
+                .addClass("img-thumbnail img-selected")
+                .appendTo(sel);
+        });
 }
 
 /**
@@ -226,22 +226,22 @@ function pasteWatch() {
  */
 function dndWatch() {
     const sel = ".gallery-selected";
-    $(sel).off("dragover").on("dragover", function(e) {
+    $(sel).off("dragover").on("dragover", function (e) {
         e.stopPropagation();
         e.preventDefault();
         e.originalEvent.dataTransfer.dropEffect = "copy";
         $(this).addClass("dnd-over");
     })
-        .off("drop").on("drop", function(e) {
+        .off("drop").on("drop", function (e) {
             e.stopPropagation();
             e.preventDefault();
             const files = e.originalEvent.dataTransfer.files; // Array of all files
 
-            for (let i=0, file; file=files[i]; i++) {
+            for (let i = 0, file; file = files[i]; i++) {
                 if (file.type.match(/image.*/)) {
                     const reader = new FileReader();
 
-                    reader.onload = function(e2) {
+                    reader.onload = function (e2) {
                         // finished reading file data.
                         $("<img />")
                             .attr("src", e2.target.result)
@@ -253,6 +253,19 @@ function dndWatch() {
                 }
             }
         });
+}
+
+// PWA Service Worker Registration
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/static/sw.js')
+            .then(function (registration) {
+                console.log('ServiceWorker registration successful');
+            })
+            .catch(function (err) {
+                console.log('ServiceWorker registration failed: ', err);
+            });
+    });
 }
 
 $(document).ready(function () {
