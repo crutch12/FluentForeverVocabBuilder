@@ -41,6 +41,13 @@
         </div>
     </div>
 
+    {% if language == 'English' %}
+    <div class="form-group">
+        <a href="https://www.oxfordlearnersdictionaries.com/definition/english/{{ word.strip().lower().replace(' ', '+') }}"
+            target="_blank">Go to Oxford's Definition (US)</a>
+    </div>
+    {% endif %}
+
     {{ render_field(form.ipa_transcription) }}
     {{ render_field(form.notes_front) }}
     {{ render_field(form.notes_back) }}

@@ -52,6 +52,7 @@ def search():
         deck=deck_name,
         form=form,
         audio_filename=audio_relative_filename,
+        language=language,
     )
 
 
