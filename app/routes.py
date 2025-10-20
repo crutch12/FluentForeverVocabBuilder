@@ -83,6 +83,8 @@ def add():
     image_paths = list(map(images.format_json_image_path, parsed_json_image_paths))
     thumbnail_image_paths = list(map(images.generate_thumbnail, image_paths))
     ipa_transcription = args.get("ipa_transcription")
+    definition = args.get("definition")
+    example = args.get("example")
     notes_front = args.get("notes_front")
     notes_back = args.get("notes_back")
     ac.add_note(
@@ -90,6 +92,8 @@ def add():
         word=word,
         image_paths=thumbnail_image_paths,
         ipa_transcription=ipa_transcription,
+        definition=definition,
+        example=example,
         notes_front=notes_front,
         notes_back=notes_back,
         recording_file_path=audio_filename,

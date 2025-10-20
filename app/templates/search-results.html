@@ -10,7 +10,7 @@
 
     <label class="form-control-label" for="image_query">{{ form.image_query.label }}</label>
     <div class="d-flex">
-        <input type="text" class="form-control w-25" id="image_query" name="image_query"
+        <input type="text" class="form-control w-50" id="image_query" name="image_query"
             value="{{ form.image_query.data }}">
         <button class="btn btn-outline-success ml-2 btn-image-search" type="button">
             Search Images
@@ -49,6 +49,8 @@
     {% endif %}
 
     {{ render_field(form.ipa_transcription) }}
+    {{ render_field(form.definition) }}
+    {{ render_field(form.example) }}
     {{ render_field(form.notes_front) }}
     {{ render_field(form.notes_back) }}
     {{ render_field(form.reverse) }}

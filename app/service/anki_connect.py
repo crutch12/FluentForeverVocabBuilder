@@ -52,6 +52,8 @@ class AnkiConnect:
     @staticmethod
     def format_notes(notes):
         html_notes = "<br>".join(html.escape(notes.strip()).split("\n"))
+        if not html_notes:
+            return ""
         return "<div>{}</div>".format(html_notes)
 
     def add_note(
@@ -60,6 +62,8 @@ class AnkiConnect:
         word,
         image_paths,
         ipa_transcription,
+        definition,
+        example,
         notes_front,
         notes_back,
         recording_file_path,
@@ -76,6 +80,8 @@ class AnkiConnect:
             picture_field += '<img src="{}">'.format(stored_image)
 
         formatted_ipa_transcription = self.format_notes(ipa_transcription)
+        formatted_definition = self.format_notes(definition)
+        formatted_example = self.format_notes(example)
         formatted_notes_front = self.format_notes(notes_front)
         formatted_notes_back = self.format_notes(notes_back)
 
@@ -86,19 +92,28 @@ class AnkiConnect:
 
         reverse = "y" if reverse else ""
 
+        front_lines = [
+            picture_field,
+            formatted_notes_front,
+            formatted_definition,
+            "e.g. " + formatted_example if formatted_example else "",
+        ]
+
+        back_lines = [
+            word,
+            formatted_ipa_transcription,
+            pronunciation_field,
+            "e.g. " + formatted_example if formatted_example else "",
+            formatted_notes_back,
+        ]
+
         params = {
             "note": {
                 "deckName": deck_name,
                 "modelName": "Basic (optional reversed card)",
                 "fields": {
-                    "Front": picture_field + "<br>" + formatted_notes_front,
-                    "Back": word
-                    + "<br>"
-                    + formatted_ipa_transcription
-                    + "<br>"
-                    + pronunciation_field
-                    + "<br>"
-                    + formatted_notes_back,
+                    "Front": "<br>".join(s.strip() for s in front_lines if s.strip()),
+                    "Back": "<br>".join(s.strip() for s in back_lines if s.strip()),
                     "Add Reverse": reverse,
                 },
                 "tags": [],
