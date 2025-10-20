@@ -43,8 +43,12 @@
 
     {% if language == 'English' %}
     <div class="form-group">
-        <a href="https://www.oxfordlearnersdictionaries.com/definition/english/{{ word.strip().lower().replace(' ', '+') }}"
+        <a href="https://www.oxfordlearnersdictionaries.com/definition/american_english/{{ word.strip().lower().replace(' ', '+') }}"
             target="_blank">Go to Oxford's Definition (US)</a>
+    </div>
+    <div class="form-group">
+        <a href="https://www.oxfordlearnersdictionaries.com/definition/english/{{ word.strip().lower().replace(' ', '+') }}"
+            target="_blank">Go to Oxford's Definition (UK)</a>
     </div>
     {% endif %}
 
