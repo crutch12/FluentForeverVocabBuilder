@@ -102,3 +102,9 @@ def add():
 @app.route("/temp/<path:path>")
 def get_temp_file(path):
     return send_from_directory("temp", path)
+
+@app.route("/resync", methods=["POST"])
+def resync():
+    sync_result = ac.sync()
+    return json.dumps({"success": True, "result": sync_result}), 200, {"ContentType": "application/json"}
+

@@ -53,6 +53,16 @@ function search() {
     );
 }
 
+// Resync decks
+function resync() {
+    $.post("/resync",
+        null,
+        function (data) {
+            alert(JSON.stringify(data, null, 2))
+        }
+    );
+}
+
 var pageNumber = 0;
 
 /**
