@@ -1,5 +1,6 @@
 import os
 
+MEGABYTE = (2 ** 10) ** 2
 
 class Config(object):
     SECRET_KEY = "fluent-forever"
@@ -9,6 +10,7 @@ class Config(object):
     TEMP_DIR_NAME = "temp"
     TEMP_DIR = os.path.join(os.getcwd(), "app", TEMP_DIR_NAME)
     MAX_IMAGE_SIZE = (400, 400)
+    MAX_FORM_MEMORY_SIZE = 50 * MEGABYTE
     AVAILABLE_LANGUAGES = [
         "English",
         "Russian",
