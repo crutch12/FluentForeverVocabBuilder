@@ -2,7 +2,9 @@ version: "3.9"
 
 services:
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     # volumes:
       # - .:/app/
     # command: bash -c "pip install -r requirements.txt && python app.py"
@@ -26,6 +28,7 @@ services:
   #   restart: unless-stopped
 
   tuna:
+    # image: yuccastream/tuna:latest
     build:
       context: .
       dockerfile: Dockerfile.tuna
@@ -34,6 +37,10 @@ services:
     restart: unless-stopped
     env_file:
       - ./.env.tuna
+    entrypoint: /usr/local/bin/tuna_http_fix_already_active.sh
+    command: http web:5000
+    volumes:
+      - ./tuna_http_fix_already_active.sh:/usr/local/bin/tuna_http_fix_already_active.sh
 
 volumes:
     anki-data:

@@ -1,6 +1,6 @@
 # FROM python:3
 # FROM python:3.8.18
-FROM python:3.9
+FROM python:3.9.23
 # FROM python:2.7
 
 RUN apt-get -y update
@@ -13,10 +13,10 @@ RUN python -m venv venv
 
 RUN bash venv/bin/activate
 
-COPY requirements.txt /app
+COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-COPY . /app
+COPY . .
 
 CMD ["bash", "start.sh"]
